@@ -1,0 +1,1227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Meher & Sons — Shoemakers of Sialkot</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#15110d; --paper:#efe8d8; --paper-2:#e4d9be;
+  --oxblood:#4a1a1d; --cognac:#8a4a23; --brass:#a88548;
+  --muted:#6b5c47; --line:rgba(21,17,13,.14);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--paper);color:var(--ink);font-family:'Inter Tight',sans-serif;font-weight:300;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.serif{font-family:'Cormorant Garamond',serif}
+.mono{font-family:'JetBrains Mono',monospace;letter-spacing:.08em}
+.italic{font-style:italic}
+.caps{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+
+/* ——— NAV ——— */
+.nav{position:fixed;top:0;left:0;right:0;z-index:80;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px 32px;background:color-mix(in srgb,var(--paper) 85%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);transition:padding .3s}
+.nav.scrolled{padding:12px 32px;background:color-mix(in srgb,var(--paper) 96%,transparent)}
+.nav-left,.nav-right{display:flex;gap:28px;align-items:center;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:400}
+.nav-right{justify-content:flex-end}
+.nav a:hover{color:var(--oxblood)}
+.nav-logo{display:flex;justify-content:center;align-items:center;gap:10px;height:48px}
+.nav-logo .mono-text{font-family:'Cormorant Garamond',serif;font-size:22px;letter-spacing:.08em;font-weight:400}
+.nav-logo .amp{font-style:italic;color:var(--oxblood);margin:0 3px}
+
+/* ——— HERO ——— */
+.hero{min-height:100vh;padding:108px 32px 40px;display:grid;grid-template-columns:1.05fr 1fr;gap:48px;position:relative}
+.hero-l{display:flex;flex-direction:column;justify-content:space-between;gap:40px}
+.eyebrow{display:flex;gap:14px;align-items:center}
+.eyebrow .dot{width:5px;height:5px;background:var(--oxblood);border-radius:50%}
+.eyebrow .ur{font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--oxblood);font-size:16px;direction:rtl;padding-left:6px;border-left:1px solid var(--line);margin-left:6px}
+.hero-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(56px,8.2vw,132px);line-height:.92;letter-spacing:-.018em;margin-top:36px}
+.hero-title em{font-style:italic;color:var(--oxblood);font-weight:400}
+.hero-title .amp{font-style:italic;color:var(--brass);font-weight:300;font-size:1.15em;vertical-align:-.05em;margin:0 .02em}
+.hero-sub{font-size:15px;line-height:1.65;max-width:420px;margin-top:28px;color:color-mix(in srgb,var(--ink) 82%,transparent)}
+.hero-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding-top:28px;border-top:1px solid var(--line)}
+.hero-meta .l{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.hero-meta .v{font-family:'Cormorant Garamond',serif;font-size:22px;line-height:1}
+.hero-meta .v em{color:var(--oxblood);font-style:italic}
+
+.hero-r{position:relative;display:flex;flex-direction:column;gap:12px}
+.hero-plate{flex:1;background:#2a1a12;position:relative;overflow:hidden;min-height:560px}
+.hero-plate .bg{position:absolute;inset:0;background-image:radial-gradient(circle at 30% 40%,#5a3a2a 0%,#1a100a 70%);}
+.hero-plate .grain{position:absolute;inset:0;opacity:.35;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
+.plate-label{position:absolute;top:16px;left:16px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#d8cdb3;letter-spacing:.15em;z-index:3}
+.plate-label-r{position:absolute;bottom:16px;right:16px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#d8cdb3;letter-spacing:.15em;z-index:3;text-align:right}
+
+/* Centerpiece oxford — hand-drawn, anatomically proper, label ring */
+.oxford-stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2}
+.oxford-stage svg{width:86%;height:auto;filter:drop-shadow(0 30px 40px rgba(0,0,0,.6))}
+.stage-ring{position:absolute;width:62%;aspect-ratio:1;border:1px solid rgba(216,205,179,.15);border-radius:50%;z-index:1}
+.stage-ring::before{content:"";position:absolute;inset:-8%;border:.5px solid rgba(216,205,179,.08);border-radius:50%}
+
+.hero-strip{display:grid;grid-template-columns:1fr 1fr;gap:12px;height:140px}
+.hero-strip-cell{background:var(--paper-2);position:relative;overflow:hidden}
+.hero-strip-cell.leather{background:linear-gradient(120deg,#3a1d1f 0%,#5a2a2c 50%,#2a1010 100%)}
+.hero-strip-cell.tool{background:linear-gradient(135deg,#2a241a 0%,#4a3d28 100%)}
+.hero-strip-cell .caps{position:absolute;left:12px;bottom:10px;color:rgba(239,232,216,.7)}
+
+/* Little rotating tag sticker */
+.seal{position:absolute;right:-36px;top:36%;width:128px;height:128px;animation:spin 22s linear infinite;z-index:4}
+.seal svg{width:100%;height:100%}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ——— LOGO full definition ——— */
+.defs{position:absolute;width:0;height:0;overflow:hidden}
+
+/* ——— MARQUEE ——— */
+.marquee{background:var(--ink);color:var(--paper);padding:16px 0;overflow:hidden;white-space:nowrap;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.marquee-track{display:inline-flex;gap:48px;animation:scroll 42s linear infinite;padding-left:48px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px}
+.marquee-track .diamond{color:var(--brass);font-style:normal}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ——— SECTION SHELL ——— */
+.section{padding:120px 32px;position:relative}
+.sec-head{display:grid;grid-template-columns:1fr 1.8fr;gap:48px;margin-bottom:72px;align-items:end}
+.sec-num{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;color:var(--muted)}
+.sec-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(44px,5.6vw,84px);line-height:.96;letter-spacing:-.015em}
+.sec-title em{font-style:italic;color:var(--oxblood)}
+.sec-lede{font-size:15px;line-height:1.65;max-width:540px;color:color-mix(in srgb,var(--ink) 78%,transparent);margin-top:20px}
+
+/* ——— MANIFESTO ——— */
+.manifesto{background:var(--paper-2)}
+.manifesto-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:start}
+.manifesto-q{grid-column:2/span 8;font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(30px,3.3vw,52px);line-height:1.2;letter-spacing:-.01em;text-wrap:pretty}
+.manifesto-q em{font-style:italic;color:var(--oxblood)}
+.manifesto-q .pull{color:var(--brass);font-style:italic}
+.manifesto-sig{grid-column:10/span 3;display:flex;flex-direction:column;gap:14px;padding-top:36px}
+.sig-line{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;line-height:1;color:var(--ink)}
+.sig-sub{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--muted)}
+
+/* ——— COLLECTION ——— */
+.collection{background:var(--paper)}
+.col-tabs{display:flex;gap:8px;margin-bottom:36px;flex-wrap:wrap}
+.col-tab{padding:8px 16px;border:1px solid var(--line);border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;transition:all .2s;background:transparent;color:var(--ink)}
+.col-tab:hover{border-color:var(--ink)}
+.col-tab.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+.col-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
+.shoe-card{grid-column:span 4;cursor:pointer;transition:transform .3s ease}
+.shoe-card.wide{grid-column:span 6}
+.shoe-card:hover{transform:translateY(-4px)}
+.shoe-frame{aspect-ratio:5/4;position:relative;overflow:hidden;background:var(--paper-2);border:1px solid var(--line)}
+.shoe-card.wide .shoe-frame{aspect-ratio:16/10}
+.shoe-frame.dark{background:#16110c}
+.shoe-frame.blood{background:#3a1518}
+.shoe-frame.cream{background:#e6dcc2}
+.shoe-frame.olive{background:#2d3022}
+.shoe-frame.cognac{background:#4a2a1a}
+.shoe-frame.ink{background:var(--ink)}
+.shoe-frame svg.shoe{position:absolute;width:72%;left:50%;top:50%;transform:translate(-50%,-50%);transition:transform .5s cubic-bezier(.2,.8,.3,1)}
+.shoe-card:hover .shoe-frame svg.shoe{transform:translate(-50%,-52%) scale(1.04)}
+.shoe-tag{position:absolute;top:14px;left:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;color:rgba(239,232,216,.9)}
+.shoe-frame.cream .shoe-tag,.shoe-frame:not(.dark):not(.blood):not(.olive):not(.cognac):not(.ink) .shoe-tag{color:var(--muted)}
+.shoe-hover{position:absolute;inset:0;background:linear-gradient(to top,rgba(21,17,13,.85) 0%,transparent 60%);opacity:0;transition:opacity .3s;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;color:var(--paper);pointer-events:none}
+.shoe-card:hover .shoe-hover{opacity:1}
+.shoe-hover .caps{color:rgba(239,232,216,.7);margin-bottom:6px}
+.shoe-hover-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;line-height:1.2}
+.shoe-meta{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;gap:12px}
+.shoe-name{font-family:'Cormorant Garamond',serif;font-size:22px;letter-spacing:-.005em}
+.shoe-price{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted)}
+.shoe-row2{display:flex;justify-content:space-between;margin-top:4px;font-size:11px;color:var(--muted);letter-spacing:.05em}
+
+/* ——— CONSTRUCTION DIAGRAM ——— */
+.construction{background:var(--ink);color:var(--paper)}
+.construction .sec-lede{color:color-mix(in srgb,var(--paper) 78%,transparent)}
+.construction .sec-num{color:color-mix(in srgb,var(--paper) 60%,transparent)}
+.cons-stage{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;border-top:1px solid color-mix(in srgb,var(--paper) 15%,transparent);padding-top:40px}
+
+.cross-section{aspect-ratio:5/4;background:#0a0806;position:relative;border:1px solid color-mix(in srgb,var(--paper) 15%,transparent);overflow:hidden}
+.cross-section svg{position:absolute;inset:8%;width:84%;height:84%}
+.cs-hotspot{position:absolute;display:flex;align-items:center;gap:10px;z-index:4;cursor:pointer}
+.cs-hotspot .pin{width:30px;height:30px;border-radius:50%;border:1px solid var(--paper);background:transparent;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--paper);transition:all .2s;position:relative}
+.cs-hotspot .pin::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(239,232,216,.18);animation:pulse 2.4s ease-out infinite}
+.cs-hotspot:hover .pin,.cs-hotspot.active .pin{background:var(--brass);color:var(--ink);border-color:var(--brass);transform:scale(1.1)}
+.cs-hotspot .lbl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.15em;color:color-mix(in srgb,var(--paper) 70%,transparent);text-transform:uppercase;white-space:nowrap}
+@keyframes pulse{0%{transform:scale(.8);opacity:.9}100%{transform:scale(1.7);opacity:0}}
+
+.cons-info{padding:28px 32px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;border:1px solid color-mix(in srgb,var(--paper) 12%,transparent)}
+.cons-info .pnum{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--brass);letter-spacing:.2em}
+.cons-info .pname{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,3.6vw,56px);line-height:1;margin:12px 0 18px}
+.cons-info .pname em{font-style:italic;color:var(--brass)}
+.cons-info .pdesc{font-size:15px;line-height:1.7;color:color-mix(in srgb,var(--paper) 82%,transparent);max-width:460px}
+.cons-info .pspec{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:14px;padding-top:20px;border-top:1px solid color-mix(in srgb,var(--paper) 15%,transparent)}
+.cons-info .pspec .k{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.2em;color:color-mix(in srgb,var(--paper) 55%,transparent);text-transform:uppercase;margin-bottom:4px}
+.cons-info .pspec .v{font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic}
+
+/* ——— PROCESS FILM STRIP ——— */
+.process{background:var(--paper-2);padding:120px 0}
+.process .sec-head{padding:0 32px}
+.film{display:flex;gap:20px;overflow-x:auto;padding:20px 32px 60px;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:var(--muted) transparent}
+.film::-webkit-scrollbar{height:6px}
+.film::-webkit-scrollbar-thumb{background:var(--muted);border-radius:3px}
+.frame{flex:0 0 320px;scroll-snap-align:start}
+.frame-img{aspect-ratio:4/5;position:relative;overflow:hidden;background:var(--ink);margin-bottom:14px}
+.frame-img .caps{position:absolute;top:14px;left:14px;color:rgba(239,232,216,.7)}
+.frame-img .frame-n{position:absolute;top:14px;right:14px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:22px;color:rgba(239,232,216,.7)}
+.frame-img .artwork{position:absolute;inset:20%;display:flex;align-items:center;justify-content:center;color:rgba(239,232,216,.92)}
+.frame-img.k1{background:linear-gradient(135deg,#3a2a1a 0%,#1a100a 100%)}
+.frame-img.k2{background:linear-gradient(135deg,#2a2018 0%,#15110c 100%)}
+.frame-img.k3{background:linear-gradient(135deg,#4a1a1d 0%,#1a0808 100%)}
+.frame-img.k4{background:linear-gradient(135deg,#5a3c28 0%,#2a1a10 100%)}
+.frame-img.k5{background:linear-gradient(135deg,#2a2418 0%,#0e0a05 100%)}
+.frame-img.k6{background:linear-gradient(135deg,#3a2212 0%,#1a0e06 100%)}
+.frame-img.k7{background:linear-gradient(135deg,#2e1e14 0%,#120804 100%)}
+.frame-title{font-family:'Cormorant Garamond',serif;font-size:22px;line-height:1.2}
+.frame-title em{font-style:italic;color:var(--oxblood)}
+.frame-desc{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.6}
+
+/* ——— LEATHERS GALLERY ——— */
+.leathers{background:var(--paper)}
+.leather-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.leather-cell{aspect-ratio:3/4;position:relative;overflow:hidden;cursor:pointer;transition:transform .3s}
+.leather-cell:hover{transform:translateY(-3px)}
+.leather-cell .swatch{position:absolute;inset:0;transition:filter .3s}
+.leather-cell:hover .swatch{filter:brightness(1.1)}
+.leather-cell .info{position:absolute;bottom:0;left:0;right:0;padding:18px;color:var(--paper);background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent 100%)}
+.leather-cell .info .caps{color:rgba(239,232,216,.7);margin-bottom:4px}
+.leather-cell .info .nm{font-family:'Cormorant Garamond',serif;font-size:22px;line-height:1.1;font-style:italic}
+.leather-cell .origin{position:absolute;top:14px;right:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;color:rgba(239,232,216,.75)}
+
+/* ——— HERITAGE / PAKISTAN ——— */
+.heritage{background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
+.heritage .sec-num,.heritage .sec-lede{color:color-mix(in srgb,var(--paper) 70%,transparent)}
+.heritage-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center}
+.heritage-img{aspect-ratio:4/5;background:linear-gradient(160deg,#3a1c14 0%,#1a0a05 100%);position:relative;overflow:hidden}
+.heritage-img .cap{position:absolute;top:18px;left:18px;color:rgba(239,232,216,.7)}
+.heritage-img .cap-r{position:absolute;bottom:18px;right:18px;color:rgba(239,232,216,.7);text-align:right}
+.heritage-img svg{position:absolute;inset:12%;width:76%;height:76%;color:#d8cdb3}
+.heritage-copy h3{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5vw,72px);line-height:.98;font-weight:300}
+.heritage-copy h3 em{font-style:italic;color:var(--brass)}
+.heritage-copy .ur{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:28px;color:var(--brass);margin-bottom:20px;direction:rtl;text-align:right;max-width:300px;margin-left:auto}
+.heritage-copy p{font-size:16px;line-height:1.75;margin-top:22px;max-width:500px;color:color-mix(in srgb,var(--paper) 82%,transparent)}
+.heritage-copy p em{color:var(--brass);font-style:italic}
+.heritage-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;padding-top:28px;border-top:1px solid color-mix(in srgb,var(--paper) 15%,transparent)}
+.heritage-stats .l{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;color:color-mix(in srgb,var(--paper) 55%,transparent);text-transform:uppercase;margin-bottom:8px}
+.heritage-stats .v{font-family:'Cormorant Garamond',serif;font-size:26px}
+.heritage-stats .v em{font-style:italic;color:var(--brass)}
+
+/* ——— BESPOKE ——— */
+.bespoke{background:var(--paper-2)}
+.bespoke-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.bespoke-visual{aspect-ratio:4/5;background:#2a1a12;position:relative;overflow:hidden}
+.bespoke-visual .bg{position:absolute;inset:0;background:radial-gradient(circle at 50% 40%,#5a3a2a 0%,#1a0e05 75%)}
+.bespoke-visual svg{position:absolute;inset:8%;width:84%;height:84%;color:#d8cdb3}
+.bespoke-visual .cap{position:absolute;top:18px;left:18px;color:rgba(239,232,216,.7)}
+.bespoke-visual .cap-b{position:absolute;bottom:18px;left:18px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:rgba(239,232,216,.88);max-width:60%;line-height:1.3}
+.bespoke-copy h3{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5vw,72px);line-height:.98;font-weight:300}
+.bespoke-copy h3 em{font-style:italic;color:var(--oxblood)}
+.bespoke-copy p{font-size:15px;line-height:1.75;margin-top:22px;max-width:480px;color:color-mix(in srgb,var(--ink) 82%,transparent)}
+.steps{margin-top:36px}
+.step{display:grid;grid-template-columns:48px 1fr auto;gap:24px;padding:20px 0;border-top:1px solid var(--line);align-items:baseline}
+.step:last-child{border-bottom:1px solid var(--line)}
+.step .n{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted)}
+.step .t{font-family:'Cormorant Garamond',serif;font-size:24px;line-height:1}
+.step .t em{font-style:italic;color:var(--oxblood)}
+.step .d{font-size:12px;color:var(--muted);letter-spacing:.04em}
+
+.cta{margin-top:36px;display:inline-flex;align-items:center;gap:14px;padding:16px 28px;background:var(--ink);color:var(--paper);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;border:none;cursor:pointer;transition:background .2s}
+.cta:hover{background:var(--oxblood)}
+.cta svg{width:14px;height:14px}
+
+/* ——— JOURNAL ——— */
+.journal{background:var(--paper)}
+.j-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.j-card{cursor:pointer}
+.j-img{aspect-ratio:4/3;position:relative;overflow:hidden;margin-bottom:18px;background:var(--ink)}
+.j-img.a{background:linear-gradient(135deg,#5a3a1f 0%,#2a1a10 100%)}
+.j-img.b{background:linear-gradient(135deg,#2e2a22 0%,#14110d 100%)}
+.j-img.c{background:linear-gradient(135deg,#4a1a1d 0%,#2a0c10 100%)}
+.j-img svg{position:absolute;inset:18%;width:64%;height:64%;color:rgba(239,232,216,.9)}
+.j-img .cap{position:absolute;top:14px;left:14px;color:rgba(239,232,216,.7)}
+.j-date{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.15em}
+.j-title{font-family:'Cormorant Garamond',serif;font-size:28px;line-height:1.15;margin-top:8px;transition:color .2s;text-wrap:pretty}
+.j-card:hover .j-title{color:var(--oxblood)}
+.j-excerpt{font-size:14px;color:var(--muted);margin-top:10px;line-height:1.65}
+
+/* ——— NEWSLETTER / FOOTER ——— */
+.subscribe{background:var(--oxblood);color:var(--paper);padding:80px 32px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+.subscribe h3{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4.6vw,64px);font-weight:300;line-height:1;letter-spacing:-.01em}
+.subscribe h3 em{font-style:italic;color:var(--brass)}
+.subscribe p{margin-top:16px;max-width:440px;color:color-mix(in srgb,var(--paper) 82%,transparent);line-height:1.65;font-size:15px}
+.sub-form{display:flex;gap:0;border-bottom:1px solid color-mix(in srgb,var(--paper) 45%,transparent)}
+.sub-form input{flex:1;background:transparent;border:none;color:var(--paper);padding:14px 0;font-family:'Inter Tight',sans-serif;font-size:16px;outline:none}
+.sub-form input::placeholder{color:color-mix(in srgb,var(--paper) 60%,transparent)}
+.sub-form button{background:transparent;color:var(--paper);border:none;padding:14px 0;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer}
+
+.footer{background:var(--ink);color:var(--paper);padding:100px 32px 40px}
+.footer-word{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(80px,14vw,220px);line-height:.85;letter-spacing:-.02em;margin-bottom:64px}
+.footer-word em{font-style:italic;color:var(--brass)}
+.footer-word .amp{font-style:italic;color:var(--oxblood);font-weight:300}
+.footer-cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid color-mix(in srgb,var(--paper) 15%,transparent)}
+.footer-brand p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;max-width:360px;line-height:1.4;opacity:.85;margin-top:18px}
+.footer-col h5{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.22em;color:var(--brass);margin-bottom:16px;text-transform:uppercase}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col a{font-size:14px;opacity:.82}
+.footer-col a:hover{opacity:1;color:var(--brass)}
+.footer-bot{display:flex;justify-content:space-between;align-items:center;padding-top:28px;font-family:'JetBrains Mono',monospace;font-size:11px;opacity:.7;letter-spacing:.1em}
+
+/* ——— MODAL ——— */
+.modal-ovl{position:fixed;inset:0;background:rgba(10,7,5,.7);backdrop-filter:blur(8px);z-index:200;display:flex;align-items:center;justify-content:center;padding:32px;opacity:0;pointer-events:none;transition:opacity .3s}
+.modal-ovl.open{opacity:1;pointer-events:auto}
+.modal{background:var(--paper);max-width:760px;width:100%;max-height:90vh;overflow-y:auto;padding:48px;position:relative;transform:translateY(20px);transition:transform .4s}
+.modal-ovl.open .modal{transform:translateY(0)}
+.modal-close{position:absolute;top:16px;right:16px;background:none;border:none;font-size:28px;color:var(--muted);cursor:pointer;font-family:'Cormorant Garamond',serif}
+.modal h3{font-family:'Cormorant Garamond',serif;font-size:44px;font-weight:300;line-height:1}
+.modal h3 em{font-style:italic;color:var(--oxblood)}
+.modal .sub{color:var(--muted);margin-top:10px;font-size:14px;line-height:1.6;max-width:500px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:18px}
+.ff label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:8px}
+.ff input,.ff select,.ff textarea{width:100%;padding:10px 0;background:transparent;border:none;border-bottom:1px solid var(--line);font-family:'Inter Tight',sans-serif;font-size:15px;color:var(--ink);outline:none;transition:border-color .2s}
+.ff input:focus,.ff select:focus,.ff textarea:focus{border-bottom-color:var(--oxblood)}
+.last-pick{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.last-opt{aspect-ratio:1;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;transition:all .2s}
+.last-opt:hover{border-color:var(--ink)}
+.last-opt.sel{border-color:var(--oxblood);background:color-mix(in srgb,var(--oxblood) 6%,transparent)}
+.last-opt svg{width:72%;height:auto}
+.last-opt .nm{position:absolute;bottom:5px;font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;color:var(--muted)}
+.lth-pick{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:10px;margin-bottom:34px}
+.lth-sw{aspect-ratio:1;border:2px solid transparent;cursor:pointer;position:relative;transition:border .2s;border-radius:3px}
+.lth-sw.sel{border-color:var(--ink)}
+.lth-sw .lbl{position:absolute;top:105%;left:0;font-family:'JetBrains Mono',monospace;font-size:8px;color:var(--muted);letter-spacing:.08em;white-space:nowrap}
+
+/* ——— CURSOR + SCROLL REVEAL ——— */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s cubic-bezier(.2,.8,.3,1),transform .9s cubic-bezier(.2,.8,.3,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* ——— RESPONSIVE ——— */
+@media(max-width:1000px){
+  .nav-left,.nav-right{display:none}
+  .nav{grid-template-columns:1fr;padding:14px 20px}
+  .hero{grid-template-columns:1fr;padding:100px 20px 40px}
+  .hero-meta{grid-template-columns:repeat(2,1fr)}
+  .section{padding:80px 20px}
+  .sec-head{grid-template-columns:1fr;gap:16px}
+  .manifesto-q,.manifesto-sig{grid-column:1/-1}
+  .col-grid{grid-template-columns:1fr}
+  .shoe-card,.shoe-card.wide{grid-column:span 1}
+  .cons-stage,.heritage-grid,.bespoke-grid{grid-template-columns:1fr}
+  .leather-grid{grid-template-columns:repeat(2,1fr)}
+  .j-grid{grid-template-columns:1fr}
+  .subscribe{grid-template-columns:1fr;padding:60px 20px}
+  .footer-cols{grid-template-columns:1fr;gap:32px}
+  .footer{padding:60px 20px 30px}
+  .seal{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ——— SVG DEFS ——— -->
+<svg class="defs" aria-hidden="true">
+  <defs>
+    <!-- LOGO monogram: refined M&S inside circle with dual ring + est date -->
+    <symbol id="logo-mono" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" stroke-width=".8"/>
+      <circle cx="50" cy="50" r="41" fill="none" stroke="currentColor" stroke-width=".4"/>
+      <text x="50" y="54" font-family="Cormorant Garamond, serif" font-size="44" font-weight="400" fill="currentColor" text-anchor="middle" dominant-baseline="central" letter-spacing="-.02em">M<tspan dx="-2" dy="2" font-size="22" font-style="italic">&amp;</tspan><tspan dx="-1" dy="-2">S</tspan></text>
+      <text x="50" y="88" font-family="JetBrains Mono, monospace" font-size="4.5" fill="currentColor" text-anchor="middle" letter-spacing="1.4">SIALKOT · EST · MCMLXVII</text>
+    </symbol>
+
+    <!-- ——— Refined, anatomically correct shoe silhouettes ——— -->
+    <!-- Wholecut Oxford -->
+    <symbol id="shoe-wholecut" viewBox="0 0 320 140">
+      <!-- outsole -->
+      <path d="M12 104 Q12 96 26 94 L290 94 Q306 96 308 104 L310 118 L14 118 Z" fill="currentColor" opacity=".85"/>
+      <!-- heel stack -->
+      <path d="M254 94 L254 118 L310 118 L308 104 Q304 96 290 94 Z" fill="currentColor" opacity=".55"/>
+      <!-- welt stitch line -->
+      <path d="M14 96 L308 96" fill="none" stroke="currentColor" stroke-width=".4" stroke-dasharray="2 2" opacity=".4"/>
+      <!-- upper (single piece) -->
+      <path d="M14 92 Q10 74 24 64 L80 40 Q120 26 170 28 L230 40 Q276 52 294 68 Q308 82 300 92 Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <!-- facing (closed lacing) -->
+      <path d="M120 44 Q155 36 195 42 L195 68 Q155 64 120 68 Z" fill="none" stroke="currentColor" stroke-width=".6" opacity=".6"/>
+      <!-- eyelets -->
+      <g fill="currentColor">
+        <circle cx="135" cy="50" r="1.2"/><circle cx="155" cy="48" r="1.2"/><circle cx="175" cy="48" r="1.2"/>
+        <circle cx="135" cy="58" r="1.2"/><circle cx="155" cy="56" r="1.2"/><circle cx="175" cy="56" r="1.2"/>
+      </g>
+      <!-- laces -->
+      <path d="M135 50 L175 58 M155 48 L175 50 M135 58 L175 48" stroke="currentColor" stroke-width=".5" opacity=".5"/>
+      <!-- heel curve accent -->
+      <path d="M260 40 Q280 46 290 68" fill="none" stroke="currentColor" stroke-width=".5" opacity=".5"/>
+    </symbol>
+
+    <!-- Cap-toe Oxford -->
+    <symbol id="shoe-captoe" viewBox="0 0 320 140">
+      <path d="M12 104 Q12 96 26 94 L290 94 Q306 96 308 104 L310 118 L14 118 Z" fill="currentColor" opacity=".85"/>
+      <path d="M254 94 L254 118 L310 118 L308 104 Q304 96 290 94 Z" fill="currentColor" opacity=".55"/>
+      <path d="M14 92 Q10 74 24 64 L80 40 Q120 26 170 28 L230 40 Q276 52 294 68 Q308 82 300 92 Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <!-- toe cap line -->
+      <path d="M88 38 Q70 60 60 90" fill="none" stroke="currentColor" stroke-width=".8"/>
+      <!-- cap-toe stitch -->
+      <path d="M84 40 Q68 62 60 88" fill="none" stroke="currentColor" stroke-width=".5" stroke-dasharray="1.5 1.5" opacity=".7"/>
+      <!-- facing -->
+      <path d="M130 44 Q165 36 205 42 L205 68 Q165 64 130 68 Z" fill="none" stroke="currentColor" stroke-width=".6" opacity=".6"/>
+      <g fill="currentColor">
+        <circle cx="143" cy="50" r="1.2"/><circle cx="165" cy="48" r="1.2"/><circle cx="185" cy="48" r="1.2"/>
+        <circle cx="143" cy="58" r="1.2"/><circle cx="165" cy="56" r="1.2"/><circle cx="185" cy="56" r="1.2"/>
+      </g>
+      <path d="M143 50 L185 58 M165 48 L185 50" stroke="currentColor" stroke-width=".5" opacity=".5"/>
+    </symbol>
+
+    <!-- Derby / Blucher -->
+    <symbol id="shoe-derby" viewBox="0 0 320 140">
+      <path d="M12 104 Q12 96 26 94 L290 94 Q306 96 308 104 L310 118 L14 118 Z" fill="currentColor" opacity=".85"/>
+      <path d="M254 94 L254 118 L310 118 L308 104 Q304 96 290 94 Z" fill="currentColor" opacity=".55"/>
+      <path d="M14 92 Q10 72 26 60 L80 38 Q120 24 172 28 L236 42 Q278 54 296 70 Q310 84 302 92 Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <!-- derby open quarters (sits on top of vamp) -->
+      <path d="M130 48 L130 72 Q160 70 195 74 L195 50 Q190 34 172 28" fill="none" stroke="currentColor" stroke-width="1"/>
+      <g fill="currentColor">
+        <circle cx="138" cy="56" r="1.3"/><circle cx="160" cy="56" r="1.3"/><circle cx="182" cy="58" r="1.3"/>
+        <circle cx="138" cy="66" r="1.3"/><circle cx="160" cy="66" r="1.3"/><circle cx="182" cy="68" r="1.3"/>
+      </g>
+      <path d="M138 56 L182 68 M160 56 L182 58" stroke="currentColor" stroke-width=".5" opacity=".5"/>
+    </symbol>
+
+    <!-- Full Brogue / Wingtip -->
+    <symbol id="shoe-brogue" viewBox="0 0 320 140">
+      <path d="M12 104 Q12 96 26 94 L290 94 Q306 96 308 104 L310 118 L14 118 Z" fill="currentColor" opacity=".85"/>
+      <path d="M254 94 L254 118 L310 118 L308 104 Q304 96 290 94 Z" fill="currentColor" opacity=".55"/>
+      <path d="M14 92 Q10 74 24 64 L80 40 Q120 26 170 28 L230 40 Q276 52 294 68 Q308 82 300 92 Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <!-- W wingtip line -->
+      <path d="M28 70 Q50 48 80 42 Q100 40 118 58 Q132 68 160 66 Q188 64 200 52 Q215 40 236 42 Q266 48 292 68" fill="none" stroke="currentColor" stroke-width=".9"/>
+      <!-- broguing -->
+      <g fill="currentColor">
+        <circle cx="44" cy="60" r=".8"/><circle cx="54" cy="56" r=".8"/><circle cx="66" cy="52" r=".8"/><circle cx="78" cy="48" r=".8"/><circle cx="90" cy="47" r=".8"/><circle cx="104" cy="52" r=".8"/><circle cx="116" cy="60" r=".8"/>
+        <circle cx="132" cy="64" r=".8"/><circle cx="148" cy="66" r=".8"/><circle cx="164" cy="66" r=".8"/><circle cx="180" cy="62" r=".8"/>
+        <circle cx="196" cy="54" r=".8"/><circle cx="210" cy="46" r=".8"/><circle cx="224" cy="42" r=".8"/><circle cx="240" cy="44" r=".8"/><circle cx="256" cy="50" r=".8"/><circle cx="272" cy="58" r=".8"/>
+        <!-- medallion -->
+        <circle cx="56" cy="70" r=".6"/><circle cx="64" cy="72" r=".6"/><circle cx="72" cy="72" r=".6"/><circle cx="80" cy="70" r=".6"/>
+      </g>
+      <!-- facing -->
+      <path d="M130 52 L130 74 Q160 72 195 76 L195 54" fill="none" stroke="currentColor" stroke-width=".6" opacity=".6"/>
+      <g fill="currentColor">
+        <circle cx="140" cy="58" r="1.1"/><circle cx="162" cy="58" r="1.1"/><circle cx="184" cy="60" r="1.1"/>
+        <circle cx="140" cy="68" r="1.1"/><circle cx="162" cy="68" r="1.1"/><circle cx="184" cy="70" r="1.1"/>
+      </g>
+    </symbol>
+
+    <!-- Double Monk Strap -->
+    <symbol id="shoe-monk" viewBox="0 0 320 140">
+      <path d="M12 104 Q12 96 26 94 L290 94 Q306 96 308 104 L310 118 L14 118 Z" fill="currentColor" opacity=".85"/>
+      <path d="M254 94 L254 118 L310 118 L308 104 Q304 96 290 94 Z" fill="currentColor" opacity=".55"/>
+      <path d="M14 92 Q10 74 24 64 L80 40 Q120 26 170 28 L230 40 Q276 52 294 68 Q308 82 300 92 Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <!-- monk saddle strap piece -->
+      <path d="M120 44 L210 48 L210 72 L120 72 Z" fill="none" stroke="currentColor" stroke-width=".9"/>
+      <!-- two straps -->
+      <rect x="128" y="50" width="74" height="6" fill="none" stroke="currentColor" stroke-width=".7"/>
+      <rect x="128" y="62" width="74" height="6" fill="none" stroke="currentColor" stroke-width=".7"/>
+      <!-- buckles -->
+      <rect x="190" y="48" width="10" height="10" fill="none" stroke="currentColor" stroke-width=".8"/>
+      <rect x="190" y="60" width="10" height="10" fill="none" stroke="currentColor" stroke-width=".8"/>
+      <line x1="195" y1="50" x2="195" y2="56" stroke="currentColor" stroke-width=".6"/>
+      <line x1="195" y1="62" x2="195" y2="68" stroke="currentColor" stroke-width=".6"/>
+    </symbol>
+
+    <!-- Penny Loafer -->
+    <symbol id="shoe-loafer" viewBox="0 0 320 140">
+      <path d="M12 104 Q12 96 26 94 L290 94 Q306 96 308 104 L310 118 L14 118 Z" fill="currentColor" opacity=".85"/>
+      <path d="M254 94 L254 118 L310 118 L308 104 Q304 96 290 94 Z" fill="currentColor" opacity=".55"/>
+      <path d="M14 92 Q10 74 24 64 L80 40 Q120 26 170 28 L236 42 Q278 54 296 70 Q310 84 302 92 Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <!-- apron / U-shaped vamp line -->
+      <path d="M60 68 Q90 46 130 44 L195 48 Q228 54 258 66" fill="none" stroke="currentColor" stroke-width=".8"/>
+      <!-- saddle with penny slot -->
+      <path d="M132 54 L204 58 L204 70 L132 70 Z" fill="none" stroke="currentColor" stroke-width=".7"/>
+      <rect x="158" y="60" width="22" height="4" fill="none" stroke="currentColor" stroke-width=".6"/>
+    </symbol>
+
+    <!-- Chelsea Boot -->
+    <symbol id="shoe-chelsea" viewBox="0 0 320 160">
+      <path d="M12 124 Q12 116 26 114 L290 114 Q306 116 308 124 L310 138 L14 138 Z" fill="currentColor" opacity=".85"/>
+      <path d="M254 114 L254 138 L310 138 L308 124 Q304 116 290 114 Z" fill="currentColor" opacity=".55"/>
+      <!-- chelsea upper w/ tall shaft -->
+      <path d="M120 20 L210 20 L210 46 Q256 54 294 72 Q308 86 302 112 L14 112 Q10 94 24 82 L80 56 Q100 48 120 46 Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <!-- elastic gusset (rendered as hatched band) -->
+      <rect x="120" y="50" width="28" height="50" fill="none" stroke="currentColor" stroke-width=".6"/>
+      <g stroke="currentColor" stroke-width=".3" opacity=".5">
+        <line x1="120" y1="58" x2="148" y2="58"/>
+        <line x1="120" y1="66" x2="148" y2="66"/>
+        <line x1="120" y1="74" x2="148" y2="74"/>
+        <line x1="120" y1="82" x2="148" y2="82"/>
+        <line x1="120" y1="90" x2="148" y2="90"/>
+      </g>
+      <!-- pull loop -->
+      <path d="M164 20 L164 12 L186 12 L186 20" fill="none" stroke="currentColor" stroke-width=".8"/>
+    </symbol>
+
+    <!-- Cross-section diagram of Goodyear welted construction -->
+    <symbol id="cross-section" viewBox="0 0 400 300">
+      <!-- Last (foot form, in gray) -->
+      <path d="M80 100 Q80 80 110 78 L290 82 Q340 86 355 110 L355 140 L80 140 Z" fill="#2a2218" stroke="#9a8555" stroke-width=".6" opacity=".5"/>
+      <text x="180" y="110" font-family="JetBrains Mono, monospace" font-size="8" fill="#8a7542" letter-spacing="1.5">LAST</text>
+
+      <!-- Upper -->
+      <path d="M78 102 Q78 90 110 88 L290 92 Q340 96 355 110 L355 150 L350 155 L78 155 L75 150 Z" fill="none" stroke="#d8cdb3" stroke-width="1.4"/>
+      <text x="90" y="106" font-family="JetBrains Mono, monospace" font-size="8" fill="#d8cdb3" letter-spacing="1.5">UPPER</text>
+
+      <!-- Lining -->
+      <path d="M82 105 L82 150 L352 150 L352 112" fill="none" stroke="#b5a680" stroke-width=".7" stroke-dasharray="2 2"/>
+
+      <!-- Insole rib -->
+      <path d="M78 152 L352 152 L352 162 L78 162 Z" fill="#4a3d25" stroke="#d8cdb3" stroke-width=".6"/>
+      <text x="170" y="158" font-family="JetBrains Mono, monospace" font-size="7" fill="#efe8d8" letter-spacing="1.5">INSOLE · RIB</text>
+
+      <!-- Welt -->
+      <path d="M60 160 Q60 156 75 155 L355 155 Q370 156 370 160 L370 175 Q370 179 355 180 L75 180 Q60 179 60 175 Z" fill="#5a4028" stroke="#d8cdb3" stroke-width="1"/>
+      <text x="170" y="172" font-family="JetBrains Mono, monospace" font-size="7" fill="#efe8d8" letter-spacing="1.5">WELT · OAK-TANNED STRIP</text>
+
+      <!-- Welt stitching (upper to welt) -->
+      <g stroke="#efe8d8" stroke-width=".6" stroke-dasharray="3 3">
+        <line x1="78" y1="155" x2="78" y2="170"/>
+      </g>
+      <g fill="#efe8d8">
+        <circle cx="90" cy="158" r=".9"/><circle cx="110" cy="158" r=".9"/><circle cx="130" cy="158" r=".9"/><circle cx="150" cy="158" r=".9"/><circle cx="170" cy="158" r=".9"/><circle cx="190" cy="158" r=".9"/><circle cx="210" cy="158" r=".9"/><circle cx="230" cy="158" r=".9"/><circle cx="250" cy="158" r=".9"/><circle cx="270" cy="158" r=".9"/><circle cx="290" cy="158" r=".9"/><circle cx="310" cy="158" r=".9"/><circle cx="330" cy="158" r=".9"/><circle cx="350" cy="158" r=".9"/>
+      </g>
+
+      <!-- Cork filler cavity -->
+      <path d="M78 162 L352 162 L352 178 L78 178 Z" fill="url(#cork-pattern)" stroke="#a88548" stroke-width=".4"/>
+      <text x="180" y="173" font-family="JetBrains Mono, monospace" font-size="6.5" fill="#efe8d8" letter-spacing="1.5" opacity=".8">CORK FILLER</text>
+
+      <!-- Outsole (leather) -->
+      <path d="M55 180 Q55 176 70 175 L360 175 Q375 176 375 180 L375 205 L55 205 Z" fill="#3a2818" stroke="#d8cdb3" stroke-width="1"/>
+      <text x="170" y="195" font-family="JetBrains Mono, monospace" font-size="7" fill="#efe8d8" letter-spacing="1.5">OUTSOLE · OAK-BARK</text>
+
+      <!-- Outsole stitching (welt to outsole) -->
+      <g fill="#efe8d8">
+        <circle cx="70" cy="190" r=".9"/><circle cx="100" cy="190" r=".9"/><circle cx="130" cy="190" r=".9"/><circle cx="160" cy="190" r=".9"/><circle cx="190" cy="190" r=".9"/><circle cx="220" cy="190" r=".9"/><circle cx="250" cy="190" r=".9"/><circle cx="280" cy="190" r=".9"/><circle cx="310" cy="190" r=".9"/><circle cx="340" cy="190" r=".9"/><circle cx="360" cy="190" r=".9"/>
+      </g>
+
+      <!-- Heel stack -->
+      <path d="M280 205 L360 205 L355 235 L290 235 Z" fill="#2a1810" stroke="#d8cdb3" stroke-width=".8"/>
+      <g stroke="#a88548" stroke-width=".4">
+        <line x1="285" y1="212" x2="358" y2="212"/>
+        <line x1="285" y1="220" x2="358" y2="220"/>
+        <line x1="285" y1="228" x2="358" y2="228"/>
+      </g>
+
+      <!-- Ground line -->
+      <line x1="30" y1="248" x2="390" y2="248" stroke="#5a4a30" stroke-width=".6"/>
+      <g stroke="#5a4a30" stroke-width=".4">
+        <line x1="30" y1="248" x2="35" y2="255"/>
+        <line x1="50" y1="248" x2="55" y2="255"/>
+        <line x1="70" y1="248" x2="75" y2="255"/>
+        <line x1="90" y1="248" x2="95" y2="255"/>
+        <line x1="110" y1="248" x2="115" y2="255"/>
+        <line x1="130" y1="248" x2="135" y2="255"/>
+        <line x1="150" y1="248" x2="155" y2="255"/>
+      </g>
+
+      <defs>
+        <pattern id="cork-pattern" width="6" height="6" patternUnits="userSpaceOnUse">
+          <rect width="6" height="6" fill="#3a2a18"/>
+          <circle cx="2" cy="2" r=".5" fill="#6a5030"/>
+          <circle cx="4" cy="4" r=".4" fill="#5a4028"/>
+        </pattern>
+      </defs>
+    </symbol>
+
+    <!-- Craft artifacts for film strip — awls, thread, last, etc -->
+    <symbol id="icon-hide" viewBox="0 0 100 100">
+      <path d="M20 30 Q15 15 35 18 L50 15 L70 20 Q88 18 82 40 L85 60 Q88 80 70 82 L50 85 L30 80 Q12 78 18 58 Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <path d="M30 40 Q50 35 70 42" fill="none" stroke="currentColor" stroke-width=".5" opacity=".6"/>
+      <path d="M35 55 Q50 52 65 58" fill="none" stroke="currentColor" stroke-width=".5" opacity=".6"/>
+    </symbol>
+    <symbol id="icon-last" viewBox="0 0 100 100">
+      <path d="M15 72 Q15 62 28 58 L50 52 Q70 50 82 54 L88 66 Q88 78 80 80 L30 82 Q15 80 15 72 Z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <path d="M50 52 L50 28 L58 28 L58 52" fill="none" stroke="currentColor" stroke-width="1"/>
+      <circle cx="54" cy="25" r="3" fill="none" stroke="currentColor" stroke-width=".8"/>
+      <text x="50" y="70" font-family="Cormorant Garamond, serif" font-size="6" fill="currentColor" text-anchor="middle" opacity=".7">No. 402</text>
+    </symbol>
+    <symbol id="icon-awl" viewBox="0 0 100 100">
+      <path d="M50 10 L54 60 L50 65 L46 60 Z" fill="currentColor"/>
+      <rect x="44" y="60" width="12" height="30" fill="none" stroke="currentColor" stroke-width="1.2" rx="2"/>
+      <line x1="44" y1="68" x2="56" y2="68" stroke="currentColor" stroke-width=".6"/>
+      <line x1="44" y1="74" x2="56" y2="74" stroke="currentColor" stroke-width=".6"/>
+      <line x1="44" y1="80" x2="56" y2="80" stroke="currentColor" stroke-width=".6"/>
+    </symbol>
+    <symbol id="icon-thread" viewBox="0 0 100 100">
+      <ellipse cx="50" cy="50" rx="22" ry="28" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="28" y1="50" x2="72" y2="50" stroke="currentColor" stroke-width=".6"/>
+      <g stroke="currentColor" stroke-width=".5">
+        <line x1="32" y1="35" x2="68" y2="35"/>
+        <line x1="30" y1="42" x2="70" y2="42"/>
+        <line x1="30" y1="58" x2="70" y2="58"/>
+        <line x1="32" y1="65" x2="68" y2="65"/>
+      </g>
+    </symbol>
+    <symbol id="icon-hammer" viewBox="0 0 100 100">
+      <rect x="30" y="28" width="40" height="16" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="50" y1="44" x2="50" y2="82" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="35" cy="36" r="1.5" fill="currentColor"/>
+      <circle cx="65" cy="36" r="1.5" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-brush" viewBox="0 0 100 100">
+      <rect x="30" y="30" width="40" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.2"/>
+      <g stroke="currentColor" stroke-width=".6">
+        <line x1="34" y1="46" x2="32" y2="70"/>
+        <line x1="40" y1="46" x2="38" y2="72"/>
+        <line x1="46" y1="46" x2="46" y2="74"/>
+        <line x1="52" y1="46" x2="54" y2="74"/>
+        <line x1="58" y1="46" x2="60" y2="72"/>
+        <line x1="64" y1="46" x2="68" y2="70"/>
+      </g>
+    </symbol>
+    <symbol id="icon-needle" viewBox="0 0 100 100">
+      <path d="M10 50 L90 50" stroke="currentColor" stroke-width="1"/>
+      <circle cx="12" cy="50" r="4" fill="none" stroke="currentColor" stroke-width="1"/>
+      <path d="M8 48 Q12 46 14 50 Q12 54 8 52" fill="none" stroke="currentColor" stroke-width=".5"/>
+      <path d="M30 50 Q50 40 70 52" fill="none" stroke="currentColor" stroke-width=".5" stroke-dasharray="2 2" opacity=".7"/>
+    </symbol>
+    <symbol id="icon-map" viewBox="0 0 100 100">
+      <!-- Stylized Pakistan outline -->
+      <path d="M30 20 L55 15 L70 25 L78 40 L72 55 L80 68 L65 82 L45 80 L35 65 L28 50 L22 38 Z" fill="none" stroke="currentColor" stroke-width="1"/>
+      <circle cx="48" cy="48" r="1.8" fill="currentColor"/>
+      <text x="55" y="50" font-family="JetBrains Mono, monospace" font-size="5" fill="currentColor" letter-spacing="1">SIALKOT</text>
+    </symbol>
+
+    <!-- Seal -->
+    <symbol id="seal" viewBox="0 0 200 200">
+      <defs><path id="sealCircle" d="M 100,100 m -76,0 a 76,76 0 1,1 152,0 a 76,76 0 1,1 -152,0"/></defs>
+      <circle cx="100" cy="100" r="90" fill="#4a1a1d" stroke="#efe8d8" stroke-width="1"/>
+      <circle cx="100" cy="100" r="82" fill="none" stroke="#efe8d8" stroke-width=".5"/>
+      <text font-family="JetBrains Mono, monospace" font-size="11" fill="#efe8d8" letter-spacing="4">
+        <textPath href="#sealCircle">HAND-WELTED · MADE IN SIALKOT · SINCE 1967 · </textPath>
+      </text>
+      <g transform="translate(100,100)">
+        <text x="0" y="-4" font-family="Cormorant Garamond, serif" font-style="italic" font-size="28" fill="#efe8d8" text-anchor="middle">M&amp;S</text>
+        <line x1="-20" y1="4" x2="20" y2="4" stroke="#efe8d8" stroke-width=".5"/>
+        <text x="0" y="18" font-family="JetBrains Mono, monospace" font-size="6" fill="#efe8d8" text-anchor="middle" letter-spacing="2">AUTHENTIC</text>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ——— NAV ——— -->
+<nav class="nav" id="nav">
+  <div class="nav-left">
+    <a href="#collection">Collection</a>
+    <a href="#craft">The Craft</a>
+    <a href="#heritage">Heritage</a>
+    <a href="#bespoke">Bespoke</a>
+    <a href="#journal">Journal</a>
+  </div>
+  <div class="nav-logo" aria-label="Meher & Sons">
+    <svg width="34" height="34" style="color:var(--ink)"><use href="#logo-mono"/></svg>
+    <div class="mono-text">Meher<span class="amp">&amp;</span>Sons</div>
+  </div>
+  <div class="nav-right">
+    <a href="#">Atelier</a>
+    <a href="#">Account</a>
+    <a href="#" style="padding:8px 14px;border:1px solid var(--ink);border-radius:100px">Bag · 0</a>
+  </div>
+</nav>
+
+<!-- ——— HERO ——— -->
+<section class="hero">
+  <div class="hero-l">
+    <div>
+      <div class="eyebrow">
+        <span class="dot"></span>
+        <span class="caps">Spring Collection · MMXXVI</span>
+        <span class="ur">میہر و بیٹے</span>
+      </div>
+      <h1 class="hero-title">Shoes of <em>honest</em><br>make, from <em>honest</em><br>hands <span class="amp">&amp;</span> <em>Sialkot</em><br>leather.</h1>
+      <p class="hero-sub">Hand-welted dress shoes from the leather houses of Sialkot, Pakistan — cut, closed and finished on a single workshop floor by forty-two kaarigar. Worn quietly in Karachi, Lahore, London, Tokyo.</p>
+    </div>
+    <div class="hero-meta">
+      <div><div class="l">Founded</div><div class="v">1967</div></div>
+      <div><div class="l">Makers</div><div class="v">Forty-<em>two</em></div></div>
+      <div><div class="l">Hours / pair</div><div class="v">Eighty-<em>three</em></div></div>
+      <div><div class="l">Ships to</div><div class="v">48 <em>countries</em></div></div>
+    </div>
+  </div>
+
+  <div class="hero-r">
+    <div class="hero-plate">
+      <div class="bg"></div>
+      <div class="grain"></div>
+      <div class="plate-label">PLATE N° 001 · WHOLECUT OXFORD · OXBLOOD CORDOVAN</div>
+      <div class="stage-ring"></div>
+      <div class="oxford-stage">
+        <svg viewBox="0 0 320 140" style="color:#efe8d8"><use href="#shoe-wholecut"/></svg>
+      </div>
+      <div class="plate-label-r">MEHER LAST N° 38<br>SHELL CORDOVAN · HORWEEN</div>
+      <div class="seal"><svg><use href="#seal"/></svg></div>
+    </div>
+    <div class="hero-strip">
+      <div class="hero-strip-cell leather">
+        <div class="caps">LEATHER · BOX CALF · TANNERY DES CUIRS</div>
+      </div>
+      <div class="hero-strip-cell tool">
+        <div class="caps">LAST N° 402 · HAND-CARVED BEECH</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ——— MARQUEE ——— -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Hand-welted in Sialkot</span><span class="diamond">◆</span>
+    <span>Shoemakers since MCMLXVII</span><span class="diamond">◆</span>
+    <span>Eighty-three hours per pair</span><span class="diamond">◆</span>
+    <span>Goodyear construction</span><span class="diamond">◆</span>
+    <span>Re-soled for life</span><span class="diamond">◆</span>
+    <span>Hand-welted in Sialkot</span><span class="diamond">◆</span>
+    <span>Shoemakers since MCMLXVII</span><span class="diamond">◆</span>
+    <span>Eighty-three hours per pair</span><span class="diamond">◆</span>
+    <span>Goodyear construction</span><span class="diamond">◆</span>
+    <span>Re-soled for life</span><span class="diamond">◆</span>
+  </div>
+</div>
+
+<!-- ——— MANIFESTO ——— -->
+<section class="section manifesto">
+  <div class="sec-head">
+    <div><div class="sec-num">I · MANIFESTO</div></div>
+    <div>
+      <h2 class="sec-title">Shoemaking, as <em>practised</em><br>at the bench.</h2>
+    </div>
+  </div>
+  <div class="manifesto-grid">
+    <div class="manifesto-q reveal">
+      A Meher shoe is not a fast object. It arrives slowly — through <em>eighty-three hours</em> of hand-work, <span class="pull">two hundred and seven pieces</span>, thirty-one operations — and leaves, we hope, even more slowly. Our makers are expected to be <em>patient</em>, their tools sharp, their days quiet. What they produce is meant to last a wearer twenty years at ordinary use, resoled four or five times, and then — if all goes well — passed on.
+    </div>
+    <div class="manifesto-sig">
+      <div class="sig-line">—  <span class="italic">Abdul Rehman Meher</span></div>
+      <div class="sig-sub">FOUNDER · MAKER N° 01 · 1967</div>
+    </div>
+  </div>
+</section>
+
+<!-- ——— COLLECTION ——— -->
+<section class="section collection" id="collection">
+  <div class="sec-head">
+    <div><div class="sec-num">II · THE COLLECTION</div></div>
+    <div>
+      <h2 class="sec-title">Seven shapes, <em>refined</em><br>across forty years.</h2>
+      <p class="sec-lede">Our standing range of seven lasts, each named for a river of the Punjab — Ravi, Jhelum, Chenab, Sutlej, Beas, Indus, Kabul. Every pair is Goodyear-welted, finished by hand, and available in calf, shell cordovan or suede. Ready-to-wear or bespoke.</p>
+    </div>
+  </div>
+
+  <div class="col-tabs">
+    <button class="col-tab active" data-f="all">All Shapes</button>
+    <button class="col-tab" data-f="oxford">Oxfords</button>
+    <button class="col-tab" data-f="derby">Derbies</button>
+    <button class="col-tab" data-f="monk">Monk Straps</button>
+    <button class="col-tab" data-f="loafer">Loafers</button>
+    <button class="col-tab" data-f="boot">Boots</button>
+  </div>
+
+  <div class="col-grid" id="collectionGrid"></div>
+</section>
+
+<!-- ——— CONSTRUCTION ——— -->
+<section class="section construction" id="craft">
+  <div class="sec-head">
+    <div><div class="sec-num">III · THE CRAFT</div></div>
+    <div>
+      <h2 class="sec-title">A shoe, <em>cut open</em>.</h2>
+      <p class="sec-lede">Every Meher shoe is hand-welted in the Goodyear method — a construction favoured for two hundred years because it allows a shoe to be resoled without disturbing the upper. Seven layers, one narrow strip of oak-tanned welt, and a single honest stitch. Click each point to walk through it.</p>
+    </div>
+  </div>
+
+  <div class="cons-stage">
+    <div class="cross-section">
+      <svg><use href="#cross-section"/></svg>
+      <div class="cs-hotspot" data-part="0" style="top:22%;left:32%">
+        <div class="pin">1</div><div class="lbl">Upper</div>
+      </div>
+      <div class="cs-hotspot active" data-part="1" style="top:48%;left:42%">
+        <div class="pin">2</div><div class="lbl">Welt</div>
+      </div>
+      <div class="cs-hotspot" data-part="2" style="top:54%;left:62%">
+        <div class="pin">3</div><div class="lbl">Rib</div>
+      </div>
+      <div class="cs-hotspot" data-part="3" style="top:64%;left:50%">
+        <div class="pin">4</div><div class="lbl">Cork</div>
+      </div>
+      <div class="cs-hotspot" data-part="4" style="top:72%;left:30%">
+        <div class="pin">5</div><div class="lbl">Outsole</div>
+      </div>
+      <div class="cs-hotspot" data-part="5" style="top:82%;left:78%">
+        <div class="pin">6</div><div class="lbl">Heel</div>
+      </div>
+    </div>
+
+    <div class="cons-info">
+      <div>
+        <div class="pnum" id="pnum">PART N° 02</div>
+        <h3 class="pname" id="pname">The <em>Welt</em></h3>
+        <p class="pdesc" id="pdesc">A narrow strip of oak-tanned cow leather, hand-stitched to the upper and the insole rib in the Goodyear method. The welt is the single feature that decides whether a shoe can be honestly resoled — four or five times, at a skilled cobbler, without ever disturbing the upper.</p>
+      </div>
+      <div class="pspec" id="pspec">
+        <div><div class="k">Material</div><div class="v">Oak-tanned cow</div></div>
+        <div><div class="k">Stitch count</div><div class="v">148 · by hand</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ——— PROCESS FILM STRIP ——— -->
+<section class="process">
+  <div class="sec-head">
+    <div><div class="sec-num">IV · THE PROCESS</div></div>
+    <div>
+      <h2 class="sec-title">From hide to <em>hand</em>,<br>in seven chapters.</h2>
+      <p class="sec-lede">Scroll → each chapter is a day or more at the bench. The whole takes three weeks for a ready-to-wear pair; eighteen months for a bespoke one.</p>
+    </div>
+  </div>
+  <div class="film" id="film">
+    <div class="frame">
+      <div class="frame-img k1">
+        <div class="caps">CH · 01</div><div class="frame-n">01</div>
+        <div class="artwork"><svg width="60%" height="60%"><use href="#icon-hide"/></svg></div>
+      </div>
+      <div class="frame-title">The <em>hide</em>, chosen.</div>
+      <div class="frame-desc">Full French calf or shell cordovan from Horween, Chicago. Inspected against light for grain, scar, and temper.</div>
+    </div>
+    <div class="frame">
+      <div class="frame-img k2">
+        <div class="caps">CH · 02</div><div class="frame-n">02</div>
+        <div class="artwork"><svg width="60%" height="60%"><use href="#icon-last"/></svg></div>
+      </div>
+      <div class="frame-title">The <em>last</em>, readied.</div>
+      <div class="frame-desc">Beechwood last No. 402 — our signature shape for the Ravi Oxford. Seasoned twelve months before it meets leather.</div>
+    </div>
+    <div class="frame">
+      <div class="frame-img k3">
+        <div class="caps">CH · 03</div><div class="frame-n">03</div>
+        <div class="artwork"><svg width="60%" height="60%"><use href="#icon-awl"/></svg></div>
+      </div>
+      <div class="frame-title">The <em>clicker's</em> bench.</div>
+      <div class="frame-desc">Clicker Rizwan cuts eighteen pattern pieces from the hide with a bone-handled knife. One hide gives three pairs — no more.</div>
+    </div>
+    <div class="frame">
+      <div class="frame-img k4">
+        <div class="caps">CH · 04</div><div class="frame-n">04</div>
+        <div class="artwork"><svg width="60%" height="60%"><use href="#icon-thread"/></svg></div>
+      </div>
+      <div class="frame-title">The <em>closing</em> room.</div>
+      <div class="frame-desc">Quarters, vamp, tongue and counter are stitched together at seven-to-the-inch with waxed linen thread.</div>
+    </div>
+    <div class="frame">
+      <div class="frame-img k5">
+        <div class="caps">CH · 05</div><div class="frame-n">05</div>
+        <div class="artwork"><svg width="60%" height="60%"><use href="#icon-hammer"/></svg></div>
+      </div>
+      <div class="frame-title">The <em>welting</em>.</div>
+      <div class="frame-desc">At the bench, a single strip of welt is stitched to upper and insole rib — 148 hand-driven stitches per shoe.</div>
+    </div>
+    <div class="frame">
+      <div class="frame-img k6">
+        <div class="caps">CH · 06</div><div class="frame-n">06</div>
+        <div class="artwork"><svg width="60%" height="60%"><use href="#icon-needle"/></svg></div>
+      </div>
+      <div class="frame-title">The <em>sole</em>, laid.</div>
+      <div class="frame-desc">Oak-bark tanned outsole, stitched to the welt. Cork filler set between; heel stacked in six layers of leather.</div>
+    </div>
+    <div class="frame">
+      <div class="frame-img k7">
+        <div class="caps">CH · 07</div><div class="frame-n">07</div>
+        <div class="artwork"><svg width="60%" height="60%"><use href="#icon-brush"/></svg></div>
+      </div>
+      <div class="frame-title">The <em>finish</em>.</div>
+      <div class="frame-desc">Burnished with deer-bone, waxed, and hot-ironed. The pair rests two days before it is boxed with its shoe trees.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ——— LEATHER LIBRARY ——— -->
+<section class="section leathers">
+  <div class="sec-head">
+    <div><div class="sec-num">V · LEATHER LIBRARY</div></div>
+    <div>
+      <h2 class="sec-title">A <em>small</em>, serious<br>library of hides.</h2>
+      <p class="sec-lede">We keep nine leathers in stock at any time. Five are shown here. Every bespoke commission begins with a visit to this rack, where you may feel and compare the tannage, grain and patina potential of each.</p>
+    </div>
+  </div>
+  <div class="leather-grid">
+    <div class="leather-cell" style="margin-bottom:8px">
+      <div class="swatch" style="background:radial-gradient(ellipse at 30% 30%,#4a1a1d 0%,#2a0a0c 100%)"></div>
+      <div class="origin">N° 01</div>
+      <div class="info"><div class="caps">SHELL CORDOVAN</div><div class="nm">Oxblood</div></div>
+    </div>
+    <div class="leather-cell" style="margin-bottom:8px">
+      <div class="swatch" style="background:radial-gradient(ellipse at 30% 30%,#3a2818 0%,#1a0e05 100%)"></div>
+      <div class="origin">N° 02</div>
+      <div class="info"><div class="caps">BOX CALF · FRANCE</div><div class="nm">Espresso</div></div>
+    </div>
+    <div class="leather-cell" style="margin-bottom:8px">
+      <div class="swatch" style="background:radial-gradient(ellipse at 30% 30%,#1a1510 0%,#080604 100%)"></div>
+      <div class="origin">N° 03</div>
+      <div class="info"><div class="caps">MUSEUM CALF · ITALY</div><div class="nm">Black</div></div>
+    </div>
+    <div class="leather-cell" style="margin-bottom:8px">
+      <div class="swatch" style="background:radial-gradient(ellipse at 30% 30%,#8a4a23 0%,#3a1f0c 100%)"></div>
+      <div class="origin">N° 04</div>
+      <div class="info"><div class="caps">AGED CALF · PAKISTAN</div><div class="nm">Cognac</div></div>
+    </div>
+    <div class="leather-cell" style="margin-bottom:8px">
+      <div class="swatch" style="background:radial-gradient(ellipse at 30% 30%,#5a4030 0%,#2a1c10 100%)"></div>
+      <div class="origin">N° 05</div>
+      <div class="info"><div class="caps">ROUGH-OUT SUEDE</div><div class="nm">Tobacco</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ——— HERITAGE · PAKISTAN ——— -->
+<section class="section heritage" id="heritage">
+  <div class="sec-head">
+    <div><div class="sec-num">VI · HERITAGE</div></div>
+    <div>
+      <h2 class="sec-title" style="color:var(--paper)">From <em>Sialkot</em>,<br>to the world.</h2>
+    </div>
+  </div>
+  <div class="heritage-grid">
+    <div class="heritage-img">
+      <div class="cap caps">SIALKOT · PUNJAB · 32.49°N</div>
+      <svg><use href="#icon-map"/></svg>
+      <div class="cap-r caps">WORKSHOP · DAULA STREET<br>EST. 1967</div>
+    </div>
+    <div class="heritage-copy">
+      <div class="ur">میہر و بیٹے · سیالکوٹ</div>
+      <h3>A craft, <em>older</em><br>than the country<br>it is made in.</h3>
+      <p>Sialkot has tanned and cut leather for over four hundred years — it is our city of <em>kaarigar</em>, master craftsmen whose fathers taught them, and whose fathers taught them. Abdul Rehman Meher opened a three-man bench here in 1967, the year after his apprenticeship ended. Today his son, Faisal Meher, runs the same forty-man workshop from the same street.</p>
+      <p>We are the first Pakistani house to hand-welt dress shoes in the Northampton manner — not as imitation, but because we believe Sialkot craftsmanship deserves a shoe at that level. Everything is cut, closed, lasted, welted, soled and finished under one roof on Daula Street.</p>
+      <div class="heritage-stats">
+        <div><div class="l">Workshop</div><div class="v">Daula St, <em>Sialkot</em></div></div>
+        <div><div class="l">Makers</div><div class="v">Forty-<em>two</em></div></div>
+        <div><div class="l">Exports to</div><div class="v">48 <em>countries</em></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ——— BESPOKE ——— -->
+<section class="section bespoke" id="bespoke">
+  <div class="bespoke-grid">
+    <div class="bespoke-visual">
+      <div class="bg"></div>
+      <div class="cap caps">BESPOKE · LAST N° 402 · NASSEF</div>
+      <svg viewBox="0 0 320 160"><use href="#shoe-chelsea"/></svg>
+      <div class="cap-b">"We write your name on the last,<br>and we keep it forever."</div>
+    </div>
+    <div class="bespoke-copy">
+      <div class="sec-num" style="margin-bottom:20px">VII · BESPOKE</div>
+      <h3>A pair, made to the<br>shape of <em>you</em>.</h3>
+      <p>Commissioning a bespoke Meher pair is a slow conversation. You will sit with Faisal at our Karachi or London atelier for a first fitting, return six weeks later for the trial shoe, and receive your finished pair roughly fourteen months later. Your <em>last</em> — a wooden sculpture of your foot — remains with us for life, so every subsequent pair takes only half the time.</p>
+      <div class="steps">
+        <div class="step"><div class="n">01</div><div class="t">The <em>measure</em></div><div class="d">90 minutes · Karachi / London / NYC</div></div>
+        <div class="step"><div class="n">02</div><div class="t">The <em>last</em> is carved</div><div class="d">Ten weeks · Sialkot bench</div></div>
+        <div class="step"><div class="n">03</div><div class="t">The <em>trial</em> shoe</div><div class="d">Worn one month · fit is corrected</div></div>
+        <div class="step"><div class="n">04</div><div class="t">The <em>finished</em> pair</div><div class="d">Fourteen months total · £3,400 onward</div></div>
+      </div>
+      <button class="cta" onclick="openModal()">Commission a pair <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- ——— JOURNAL ——— -->
+<section class="section journal" id="journal">
+  <div class="sec-head">
+    <div><div class="sec-num">VIII · JOURNAL</div></div>
+    <div>
+      <h2 class="sec-title">From the <em>workshop</em>,<br>and the road.</h2>
+      <p class="sec-lede">Notes on leather, on method, on the rooms where our shoes are made — and on the men who made them.</p>
+    </div>
+  </div>
+  <div class="j-grid">
+    <article class="j-card">
+      <div class="j-img a">
+        <div class="cap caps">ESSAY · LEATHER</div>
+        <svg><use href="#icon-hide"/></svg>
+      </div>
+      <div class="j-date">N° 14 · 04 · MMXXVI</div>
+      <h4 class="j-title">On the colour of an old shoe</h4>
+      <p class="j-excerpt">Patina is not something one applies. It is the slow memory a leather keeps of the weather it has walked through. A short essay on why Meher pairs are never sold pre-antiqued.</p>
+    </article>
+    <article class="j-card">
+      <div class="j-img b">
+        <div class="cap caps">PROFILE · A MAKER</div>
+        <svg><use href="#icon-last"/></svg>
+      </div>
+      <div class="j-date">N° 13 · 03 · MMXXVI</div>
+      <h4 class="j-title">Ustad Rizwan, fifty years at the cutting table</h4>
+      <p class="j-excerpt">A conversation with our senior clicker, who has cut the leather for over forty thousand pairs since 1974 — and still refuses to wear his own shoes to the workshop.</p>
+    </article>
+    <article class="j-card">
+      <div class="j-img c">
+        <div class="cap caps">METHOD</div>
+        <svg><use href="#icon-needle"/></svg>
+      </div>
+      <div class="j-date">N° 12 · 02 · MMXXVI</div>
+      <h4 class="j-title">Hand-welting, plainly explained</h4>
+      <p class="j-excerpt">The single operation that decides whether a shoe can be re-soled a dozen times — or not at all. A diagram, and three photographs from the bench.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ——— SUBSCRIBE ——— -->
+<section class="subscribe">
+  <div>
+    <h3>Letters from<br><em>Sialkot</em>.</h3>
+    <p>Four times a year, a proper letter — not a newsletter. New pairs, workshop notes, an essay or two, and the occasional invitation to our atelier. Nothing more.</p>
+  </div>
+  <form class="sub-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='— Thank you'; this.querySelector('input').value=''">
+    <input type="email" placeholder="your e-mail address"/>
+    <button type="submit">Subscribe →</button>
+  </form>
+</section>
+
+<!-- ——— FOOTER ——— -->
+<footer class="footer">
+  <div class="footer-word">Meher <span class="amp">&amp;</span> <em>Sons</em>.</div>
+  <div class="footer-cols">
+    <div class="footer-brand">
+      <svg width="64" height="64" style="color:var(--paper)"><use href="#logo-mono"/></svg>
+      <p>Hand-welted shoemakers. Sialkot, Pakistan — since nineteen hundred and sixty-seven.</p>
+    </div>
+    <div class="footer-col">
+      <h5>House</h5>
+      <ul><li><a href="#">Collection</a></li><li><a href="#">Bespoke</a></li><li><a href="#">Lasts & Fit</a></li><li><a href="#">Gift Cards</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h5>Atelier</h5>
+      <ul><li><a href="#">Karachi · Clifton</a></li><li><a href="#">London · Mayfair</a></li><li><a href="#">New York · Madison</a></li><li><a href="#">Sialkot Works</a></li></ul>
+    </div>
+    <div class="footer-col">
+      <h5>Service</h5>
+      <ul><li><a href="#">Re-soling</a></li><li><a href="#">Re-crafting</a></li><li><a href="#">Shoe Care</a></li><li><a href="#">Contact</a></li></ul>
+    </div>
+  </div>
+  <div class="footer-bot">
+    <div>© MMXXVI MEHER & SONS (PVT.) LTD · SIALKOT · PAKISTAN</div>
+    <div>PRIVACY · TERMS · COOKIES</div>
+  </div>
+</footer>
+
+<!-- ——— MODAL ——— -->
+<div class="modal-ovl" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="sec-num" style="margin-bottom:10px">COMMISSION · STEP 1 OF 4</div>
+    <h3>A pair, made to the<br>shape of <em>you</em>.</h3>
+    <p class="sub">Begin by telling us what you have in mind. We'll reply within two working days to arrange your first fitting.</p>
+    <div style="margin-top:30px">
+      <div class="ff" style="margin-bottom:22px">
+        <label>Choose a last</label>
+        <div class="last-pick" id="lastPick">
+          <div class="last-opt" data-v="ravi"><svg viewBox="0 0 320 140"><use href="#shoe-wholecut"/></svg><div class="nm">RAVI</div></div>
+          <div class="last-opt" data-v="jhelum"><svg viewBox="0 0 320 140"><use href="#shoe-captoe"/></svg><div class="nm">JHELUM</div></div>
+          <div class="last-opt" data-v="chenab"><svg viewBox="0 0 320 140"><use href="#shoe-derby"/></svg><div class="nm">CHENAB</div></div>
+          <div class="last-opt" data-v="sutlej"><svg viewBox="0 0 320 140"><use href="#shoe-monk"/></svg><div class="nm">SUTLEJ</div></div>
+        </div>
+      </div>
+      <div class="ff" style="margin-bottom:22px">
+        <label>Choose a leather</label>
+        <div class="lth-pick" id="lthPick">
+          <div class="lth-sw" data-v="black" style="background:#0e0a07"><div class="lbl">BLACK CALF</div></div>
+          <div class="lth-sw" data-v="oxblood" style="background:#4a1a1d"><div class="lbl">OXBLOOD SHELL</div></div>
+          <div class="lth-sw" data-v="chestnut" style="background:#6b3a1a"><div class="lbl">CHESTNUT</div></div>
+          <div class="lth-sw" data-v="cognac" style="background:#8a4a23"><div class="lbl">COGNAC</div></div>
+          <div class="lth-sw" data-v="tobacco" style="background:#3a2214"><div class="lbl">TOBACCO SUEDE</div></div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="ff"><label>Your name</label><input type="text" placeholder="Given and family"/></div>
+        <div class="ff"><label>E-mail</label><input type="email" placeholder="you@domain"/></div>
+      </div>
+      <div class="form-row">
+        <div class="ff"><label>Preferred atelier</label>
+          <select><option>Karachi · Clifton</option><option>London · Mayfair</option><option>New York · Madison</option></select>
+        </div>
+        <div class="ff"><label>Telephone</label><input type="tel" placeholder="+92 / +44 / +1"/></div>
+      </div>
+      <div class="ff" style="margin-top:18px">
+        <label>A note (optional)</label>
+        <textarea rows="3" placeholder="Anything particular — a shape you saw, an occasion, a fit preference."></textarea>
+      </div>
+      <button class="cta" style="margin-top:28px;width:100%;justify-content:center" onclick="submit()">Request a fitting <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+
+<script>
+// ——— Collection data ———
+const SHOES = [
+  { cat:"oxford", name:"The Ravi", type:"Wholecut Oxford", price:"£ 1,240", shoe:"shoe-wholecut", frame:"blood", wide:true, tag:"N° 001 · RAVI-LAST", city:"Calf · Oxblood" },
+  { cat:"oxford", name:"The Jhelum", type:"Cap-toe Oxford", price:"£ 1,160", shoe:"shoe-captoe", frame:"dark", tag:"N° 014 · JHELUM-LAST", city:"Box Calf · Black" },
+  { cat:"derby", name:"The Chenab", type:"Plain Derby", price:"£ 1,080", shoe:"shoe-derby", frame:"cognac", tag:"N° 027 · CHENAB-LAST", city:"Aged Calf · Cognac" },
+  { cat:"oxford", name:"The Beas", type:"Full Brogue", price:"£ 1,320", shoe:"shoe-brogue", frame:"olive", tag:"N° 041 · BEAS-LAST", city:"Scotch Grain · Olive" },
+  { cat:"monk", name:"The Sutlej", type:"Double Monk", price:"£ 1,280", shoe:"shoe-monk", frame:"cream", tag:"N° 052 · SUTLEJ-LAST", city:"Museum Calf · Camel" },
+  { cat:"loafer", name:"The Indus", type:"Penny Loafer", price:"£ 980", shoe:"shoe-loafer", frame:"ink", tag:"N° 068 · INDUS-LAST", city:"Shell Cordovan · Black" },
+  { cat:"boot", name:"The Kabul", type:"Chelsea Boot", price:"£ 1,460", shoe:"shoe-chelsea", frame:"dark", wide:true, tag:"N° 084 · KABUL-LAST", city:"Suede · Tobacco" }
+];
+
+function renderCollection(filter="all"){
+  const g=document.getElementById("collectionGrid");
+  g.innerHTML="";
+  SHOES.filter(s=>filter==="all"||s.cat===filter).forEach(s=>{
+    const card=document.createElement("div");
+    card.className="shoe-card"+(s.wide?" wide":"");
+    const vh=s.shoe==="shoe-chelsea"?160:140;
+    card.innerHTML=`
+      <div class="shoe-frame ${s.frame}">
+        <div class="shoe-tag">${s.tag}</div>
+        <svg class="shoe" viewBox="0 0 320 ${vh}" style="color:#efe8d8"><use href="#${s.shoe}"/></svg>
+        <div class="shoe-hover">
+          <div class="caps">${s.city}</div>
+          <div class="shoe-hover-title">Goodyear-welted · Hand-finished</div>
+        </div>
+      </div>
+      <div class="shoe-meta">
+        <div class="shoe-name">${s.name}</div>
+        <div class="shoe-price">${s.price}</div>
+      </div>
+      <div class="shoe-row2"><span>${s.type}</span><span>${s.city}</span></div>`;
+    g.appendChild(card);
+  });
+}
+renderCollection();
+document.querySelectorAll(".col-tab").forEach(t=>t.addEventListener("click",()=>{
+  document.querySelectorAll(".col-tab").forEach(o=>o.classList.remove("active"));
+  t.classList.add("active");
+  renderCollection(t.dataset.f);
+}));
+
+// ——— Construction interactive ———
+const PARTS=[
+  {n:"01",name:"The <em>Upper</em>",desc:"Cut in eighteen pieces from a single calf hide — vamp, quarters, toe cap, counter, tongue, facings and lining. Closed together with 420 hand-stitches at seven-to-the-inch.",s:[["Pieces","Eighteen"],["Stitches","420 · by hand"]]},
+  {n:"02",name:"The <em>Welt</em>",desc:"A narrow strip of oak-tanned cow leather, hand-stitched to the upper and the insole rib. The welt is the single feature that decides whether a shoe can be honestly resoled — four or five times — without ever disturbing the upper.",s:[["Material","Oak-tanned cow"],["Stitch count","148 · by hand"]]},
+  {n:"03",name:"The <em>Rib</em>",desc:"A canvas-and-leather rib runs around the insole, set perpendicular to the foot. The welt-stitch passes through this rib — not the insole itself — which is why the insole stays intact through many re-soles.",s:[["Form","Canvas & leather"],["Age","Proved 200 years"]]},
+  {n:"04",name:"The <em>Cork</em>",desc:"The cavity between insole and outsole is packed with shredded Portuguese cork mixed with natural latex. Over a few wears it moulds to the print of your foot — why a Goodyear-welted shoe feels more comfortable with age, not less.",s:[["Source","Portugal"],["Thickness","3mm hand-packed"]]},
+  {n:"05",name:"The <em>Outsole</em>",desc:"Oak-bark tanned sole leather from Devon, England — a slow leather, nine months in the pit. Stitched to the welt (never to the upper) in a second operation. It is why the shoe takes a month to feel perfectly yours.",s:[["Tannage","Oak-bark, 9 mo."],["Stitch","Outseam · machine"]]},
+  {n:"06",name:"The <em>Heel</em>",desc:"Six layers of oak-tanned leather, pressed and nailed into the outsole. Finished with beeswax and a hot iron. Replaceable every two years at an ordinary cobbler.",s:[["Layers","Six stacked"],["Finish","Beeswax & iron"]]}
+];
+function showPart(i){
+  const p=PARTS[i];
+  document.getElementById("pnum").textContent=`PART N° ${p.n}`;
+  document.getElementById("pname").innerHTML=p.name;
+  document.getElementById("pdesc").textContent=p.desc;
+  document.getElementById("pspec").innerHTML=p.s.map(([k,v])=>`<div><div class="k">${k}</div><div class="v">${v}</div></div>`).join("");
+  document.querySelectorAll(".cs-hotspot").forEach((h,j)=>h.classList.toggle("active",j===i));
+}
+document.querySelectorAll(".cs-hotspot").forEach(h=>h.addEventListener("click",()=>showPart(+h.dataset.part)));
+
+// ——— Modal ———
+function openModal(){document.getElementById("modal").classList.add("open")}
+function closeModal(){document.getElementById("modal").classList.remove("open")}
+document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeModal()});
+document.querySelectorAll("#lastPick .last-opt").forEach(el=>el.addEventListener("click",()=>{
+  document.querySelectorAll("#lastPick .last-opt").forEach(o=>o.classList.remove("sel"));
+  el.classList.add("sel");
+}));
+document.querySelectorAll("#lthPick .lth-sw").forEach(el=>el.addEventListener("click",()=>{
+  document.querySelectorAll("#lthPick .lth-sw").forEach(o=>o.classList.remove("sel"));
+  el.classList.add("sel");
+}));
+document.querySelector("#lastPick .last-opt")?.classList.add("sel");
+document.querySelector("#lthPick .lth-sw")?.classList.add("sel");
+function submit(){
+  const m=document.querySelector("#modal .modal");
+  m.innerHTML=`<button class="modal-close" onclick="closeModal()">×</button>
+  <div class="sec-num" style="margin-bottom:10px">COMMISSION · RECEIVED</div>
+  <h3>Thank you. We'll be <em>in touch</em>.</h3>
+  <p class="sub" style="margin-top:14px">Your request has been entered into the order book. Faisal Meher or a member of our bench will write to you within two working days to arrange your first fitting.</p>
+  <div style="margin-top:36px;padding:22px;border:1px solid var(--line);font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.9;background:color-mix(in srgb,var(--ink) 3%,transparent)">
+    REFERENCE · MS-${Math.floor(Math.random()*9000+1000)}-MMXXVI<br>
+    STATUS · AWAITING FITTING<br>
+    ATELIER · KARACHI · CLIFTON
+  </div>`;
+}
+
+// ——— Reveal + nav shrink ———
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add("in")}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+addEventListener("scroll",()=>document.getElementById("nav").classList.toggle("scrolled",scrollY>60));
+</script>
+
+<!-- ——— TWEAKS ——— -->
+<script type="text/babel">
+const TWEAKS_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accent": "oxblood",
+  "paper": "warm",
+  "serif": "Cormorant Garamond",
+  "showMarquee": true,
+  "showSeal": true
+}/*EDITMODE-END*/;
+
+const ACCENTS = {
+  oxblood:{ox:"#4a1a1d",br:"#a88548",label:"Oxblood & Brass (default)"},
+  forest: {ox:"#1f3a2a",br:"#9a8a4a",label:"Forest & Olive"},
+  indigo: {ox:"#1a2438",br:"#8a7a4a",label:"Indigo & Bronze"},
+  cognac: {ox:"#6b3a1a",br:"#c4a06a",label:"Cognac & Gold"}
+};
+const PAPERS = {
+  warm: {p:"#efe8d8",p2:"#e4d9be",label:"Warm parchment"},
+  cool: {p:"#ecece6",p2:"#dadad2",label:"Cool linen"},
+  chalk:{p:"#f6f3ec",p2:"#ebe6da",label:"Chalk"},
+  bone: {p:"#ebe4d0",p2:"#ddd4bb",label:"Bone"}
+};
+const SERIFS = ["Cormorant Garamond","Playfair Display","EB Garamond","DM Serif Display"];
+const loadedFonts = new Set(SERIFS);
+SERIFS.forEach(f=>{
+  const l=document.createElement("link");
+  l.rel="stylesheet";
+  l.href=`https://fonts.googleapis.com/css2?family=${f.replace(/ /g,'+')}:ital,wght@0,300;0,400;0,500;1,400;1,500&display=swap`;
+  document.head.appendChild(l);
+});
+
+function TweaksApp(){
+  const [t,setT]=window.useTweaks(TWEAKS_DEFAULTS);
+  React.useEffect(()=>{
+    const a=ACCENTS[t.accent]||ACCENTS.oxblood;
+    const p=PAPERS[t.paper]||PAPERS.warm;
+    document.documentElement.style.setProperty("--oxblood",a.ox);
+    document.documentElement.style.setProperty("--brass",a.br);
+    document.documentElement.style.setProperty("--paper",p.p);
+    document.documentElement.style.setProperty("--paper-2",p.p2);
+    document.querySelectorAll(".serif,.hero-title,.sec-title,.shoe-name,.pname,.j-title,.heritage-copy h3,.bespoke-copy h3,.modal h3,.subscribe h3,.footer-word,.marquee,.manifesto-q,.sig-line,.step .t,.hero-meta .v,.heritage-stats .v,.frame-title,.leather-cell .nm,.ur,.nav-logo .mono-text").forEach(el=>{
+      el.style.fontFamily=`'${t.serif}', serif`;
+    });
+    const mq=document.querySelector(".marquee"); if(mq) mq.style.display=t.showMarquee?"block":"none";
+    const seal=document.querySelector(".seal"); if(seal) seal.style.display=t.showSeal?"block":"none";
+  },[t]);
+
+  return (
+    <window.TweaksPanel title="Tweaks">
+      <window.TweakSection title="Accent">
+        <window.TweakRadio value={t.accent} onChange={v=>setT({accent:v})} options={Object.entries(ACCENTS).map(([k,v])=>({value:k,label:v.label}))}/>
+      </window.TweakSection>
+      <window.TweakSection title="Paper">
+        <window.TweakRadio value={t.paper} onChange={v=>setT({paper:v})} options={Object.entries(PAPERS).map(([k,v])=>({value:k,label:v.label}))}/>
+      </window.TweakSection>
+      <window.TweakSection title="Display serif">
+        <window.TweakSelect value={t.serif} onChange={v=>setT({serif:v})} options={SERIFS.map(s=>({value:s,label:s}))}/>
+      </window.TweakSection>
+      <window.TweakSection title="Workshop marquee">
+        <window.TweakToggle value={t.showMarquee} onChange={v=>setT({showMarquee:v})} label="Show marquee"/>
+      </window.TweakSection>
+      <window.TweakSection title="Spinning seal">
+        <window.TweakToggle value={t.showSeal} onChange={v=>setT({showSeal:v})} label="Show hero seal"/>
+      </window.TweakSection>
+    </window.TweaksPanel>
+  );
+}
+const root=document.createElement("div");document.body.appendChild(root);
+ReactDOM.createRoot(root).render(<TweaksApp/>);
+</script>
+</body>
+</html>
